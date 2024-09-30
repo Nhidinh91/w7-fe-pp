@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useAuth } from "./useAuth";
 
 export default function useSignup(url) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+  const { login: authLogin } = useAuth();
 
   const signup = async (object) => {
     setIsLoading(true);
@@ -21,7 +23,7 @@ export default function useSignup(url) {
       return error;
     }
 
-    localStorage.setItem("user", JSON.stringify(user));
+    authLogin(user);
     setIsLoading(false);
   };
 

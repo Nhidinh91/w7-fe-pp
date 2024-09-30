@@ -2,7 +2,7 @@ import useField from "../hooks/useField";
 import useSignup from "../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 
-const Signup = ({setIsAuthenticated}) => {
+const Signup = () => {
   const navigate = useNavigate();
   const name = useField("text");  
   const email = useField("email");
@@ -27,7 +27,6 @@ const Signup = ({setIsAuthenticated}) => {
     });
     if (!error) {
       console.log("success");
-      setIsAuthenticated(true);
       navigate("/");
     }
   };
